@@ -1,7 +1,8 @@
 package com.moonlight.originaltech.setup;
 
 import com.moonlight.originaltech.OriginalTech;
-import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.groups.NestedItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.groups.SubItemGroup;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -10,42 +11,34 @@ import net.md_5.bungee.api.ChatColor;
 
 public class OTItemGroups {
 
-    public static final ItemStack OT_ICON;
-    static {
-        OT_ICON = new ItemStack(Material.GRASS_BLOCK);
-        ItemMeta meta = OT_ICON.getItemMeta();
-        meta.setDisplayName(ChatColor.GREEN + "原版科技");
-        OT_ICON.setItemMeta(meta);
+    public static ItemStack createIcon(Material material, String name) {
+        ItemStack icon = new ItemStack(material);
+        ItemMeta meta = icon.getItemMeta();
+        meta.setDisplayName(name);
+        icon.setItemMeta(meta);
+        return icon;
     }
 
-    public static final ItemGroup OT_ITEM_GROUP = new ItemGroup(
-        new NamespacedKey(OriginalTech.getInstance(), "original_tech"),
-        OT_ICON
-    );
+    public static final NestedItemGroup OT_ITEM_GROUP;
+    public static final SubItemGroup BASIC_MATERIALS_GROUP;
+    public static final SubItemGroup BASIC_MACHINES_GROUP;
 
-    public static final ItemStack BASIC_MATERIALS_ICON;
     static {
-        BASIC_MATERIALS_ICON = new ItemStack(Material.OAK_LOG);
-        ItemMeta meta = BASIC_MATERIALS_ICON.getItemMeta();
-        meta.setDisplayName(ChatColor.YELLOW + "基础材料");
-        BASIC_MATERIALS_ICON.setItemMeta(meta);
+        OT_ITEM_GROUP = new NestedItemGroup(
+            new NamespacedKey(OriginalTech.getInstance(), "original_tech"),
+            createIcon(Material.GRASS_BLOCK, ChatColor.GREEN + "原版科技")
+        );
+
+        BASIC_MATERIALS_GROUP = new SubItemGroup(
+            new NamespacedKey(OriginalTech.getInstance(), "basic_materials"),
+            OT_ITEM_GROUP,
+            createIcon(Material.OAK_LOG, ChatColor.YELLOW + "基础材料")
+        );
+
+        BASIC_MACHINES_GROUP = new SubItemGroup(
+            new NamespacedKey(OriginalTech.getInstance(), "basic_machines"),
+            OT_ITEM_GROUP,
+            createIcon(Material.FURNACE, ChatColor.GOLD + "基础机器")
+        );
     }
-
-    public static final ItemGroup BASIC_MATERIALS_GROUP = new ItemGroup(
-        new NamespacedKey(OriginalTech.getInstance(), "basic_materials"),
-        BASIC_MATERIALS_ICON
-    );
-
-    public static final ItemStack BASIC_MACHINES_ICON;
-    static {
-        BASIC_MACHINES_ICON = new ItemStack(Material.FURNACE);
-        ItemMeta meta = BASIC_MACHINES_ICON.getItemMeta();
-        meta.setDisplayName(ChatColor.GOLD + "基础机器");
-        BASIC_MACHINES_ICON.setItemMeta(meta);
-    }
-
-    public static final ItemGroup BASIC_MACHINES_GROUP = new ItemGroup(
-        new NamespacedKey(OriginalTech.getInstance(), "basic_machines"),
-        BASIC_MACHINES_ICON
-    );
 }

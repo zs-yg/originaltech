@@ -29,5 +29,18 @@ public class OTBasicMachines {
             }
         ).register(plugin);
         plugin.getLogger().info("基础机器已加载 - 原版？工作台");
+
+        OTOriginalMiner miner = new OTOriginalMiner(
+            OTItemGroups.BASIC_MACHINES_GROUP,
+            OTOriginalMiner.ORIGINAL_MINER,
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.DIAMOND_PICKAXE),
+                new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.STONE), new ItemStack(Material.DIAMOND_PICKAXE),
+                new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.DIAMOND_PICKAXE)
+            }
+        );
+        miner.register(plugin);
+        plugin.getLogger().info("基础机器已加载 - 原版矿机");
     }
 }
