@@ -1,7 +1,7 @@
-package com.yourname.originaltech.items.materials;
+package com.moonlight.originaltech.items.materials;
 
-import com.yourname.originaltech.OriginalTech;
-import com.yourname.originaltech.setup.OTItemGroups;
+import com.moonlight.originaltech.OriginalTech;
+import com.moonlight.originaltech.setup.OTItemGroups;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -27,5 +27,6 @@ public class OTMaterials {
                 new ItemStack(Material.SAND), new ItemStack(Material.SAND), new ItemStack(Material.SAND)
             }
         ).register(plugin);
+        plugin.getLogger().info("基础材料已加载 - 原版硅");
     }
 }

@@ -1,12 +1,11 @@
-package com.yourname.originaltech.items.machines;
+package com.moonlight.originaltech.items.machines;
 
-import com.yourname.originaltech.OriginalTech;
-import com.yourname.originaltech.items.materials.OTMaterials;
-import com.yourname.originaltech.setup.OTItemGroups;
+import com.moonlight.originaltech.OriginalTech;
+import com.moonlight.originaltech.items.materials.OTMaterials;
+import com.moonlight.originaltech.setup.OTItemGroups;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -29,5 +28,6 @@ public class OTBasicMachines {
                 OTMaterials.SILICON, new ItemStack(Material.DIAMOND), OTMaterials.SILICON
             }
         ).register(plugin);
+        plugin.getLogger().info("基础机器已加载 - 原版？工作台");
     }
 }

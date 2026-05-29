@@ -1,6 +1,6 @@
-package com.yourname.originaltech.items.machines;
+package com.moonlight.originaltech.items.machines;
 
-import com.yourname.originaltech.OriginalTech;
+import com.moonlight.originaltech.OriginalTech;
 
 public class OTMachines {
 

@@ -1,6 +1,6 @@
-package com.yourname.originaltech.setup;
+package com.moonlight.originaltech.setup;
 
-import com.yourname.originaltech.OriginalTech;
+import com.moonlight.originaltech.OriginalTech;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
