@@ -30,11 +30,21 @@ public class OTOriginalMiner extends AContainer implements MachineProcessHolder<
 
     private static final Map<Material, Integer> ORE_WEIGHTS = new HashMap<>();
     static {
-        ORE_WEIGHTS.put(Material.COPPER_INGOT, 40);
-        ORE_WEIGHTS.put(Material.COAL, 30);
-        ORE_WEIGHTS.put(Material.IRON_INGOT, 20);
-        ORE_WEIGHTS.put(Material.LAPIS_LAZULI, 8);
-        ORE_WEIGHTS.put(Material.DIAMOND, 2);
+        // 最高概率 - 三废石和原石 (各10，共40%)
+        ORE_WEIGHTS.put(Material.GRANITE, 10);
+        ORE_WEIGHTS.put(Material.DIORITE, 10);
+        ORE_WEIGHTS.put(Material.ANDESITE, 10);
+        ORE_WEIGHTS.put(Material.COBBLESTONE, 10);
+        // 中等概率
+        ORE_WEIGHTS.put(Material.COPPER_INGOT, 15);
+        ORE_WEIGHTS.put(Material.COAL, 15);
+        ORE_WEIGHTS.put(Material.IRON_INGOT, 10);
+        // 较低概率
+        ORE_WEIGHTS.put(Material.LAPIS_LAZULI, 5);
+        ORE_WEIGHTS.put(Material.REDSTONE, 5);
+        // 稀有矿物
+        ORE_WEIGHTS.put(Material.GOLD_INGOT, 3);
+        ORE_WEIGHTS.put(Material.DIAMOND, 1);
         ORE_WEIGHTS.put(Material.EMERALD, 1);
     }
 
@@ -50,7 +60,7 @@ public class OTOriginalMiner extends AContainer implements MachineProcessHolder<
         "&7将石头转化为原版矿物",
         "&7消耗: &e石头 + 10 J/s",
         "",
-        "&8铜 > 煤炭 > 铁 > 青金石 > 钻石 > 绿宝石"
+        "&8原石/三废石 > 铜/煤炭 > 铁 > 红石/青金石 > 金 > 钻石 > 绿宝石"
     );
 
     public OTOriginalMiner(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
@@ -72,8 +82,19 @@ public class OTOriginalMiner extends AContainer implements MachineProcessHolder<
         BlockMenu menu = BlockStorage.getInventory(block);
         if (menu == null) return;
 
-        ItemStack input = menu.getItemInSlot(getInputSlots()[0]);
-        if (input == null || input.getType() != Material.STONE) {
+        // 检查所有输入槽，找到有石头的槽
+        ItemStack input = null;
+        int inputSlot = -1;
+        for (int slot : getInputSlots()) {
+            ItemStack item = menu.getItemInSlot(slot);
+            if (item != null && item.getType() == Material.STONE) {
+                input = item;
+                inputSlot = slot;
+                break;
+            }
+        }
+
+        if (input == null || inputSlot == -1) {
             return;
         }
 
@@ -104,7 +125,7 @@ public class OTOriginalMiner extends AContainer implements MachineProcessHolder<
                 return new ItemStack(entry.getKey());
             }
         }
-        return new ItemStack(Material.EMERALD);
+        return new ItemStack(Material.COBBLESTONE);
     }
 
     @Override
