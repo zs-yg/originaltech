@@ -1,0 +1,7 @@
+name: OriginalTech
+version: '1.0.0'
+main: com.moonlight.originaltech.OriginalTech
+api-version: '1.21'
+depend: [Slimefun]
+author: moonlight
+description: Original Technology Slimefun Addon
