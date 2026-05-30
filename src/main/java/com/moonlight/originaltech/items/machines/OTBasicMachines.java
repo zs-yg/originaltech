@@ -42,5 +42,18 @@ public class OTBasicMachines {
         );
         miner.register(plugin);
         plugin.getLogger().info("基础机器已加载 - 原版矿机");
+
+        OTNetherMiner netherMiner = new OTNetherMiner(
+            OTItemGroups.BASIC_MACHINES_GROUP,
+            OTNetherMiner.NETHER_MINER,
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                new ItemStack(Material.NETHERITE_PICKAXE), new ItemStack(Material.NETHERITE_PICKAXE), new ItemStack(Material.NETHERITE_PICKAXE),
+                new ItemStack(Material.NETHERITE_PICKAXE), new ItemStack(Material.NETHERRACK), new ItemStack(Material.NETHERITE_PICKAXE),
+                new ItemStack(Material.NETHERITE_PICKAXE), new ItemStack(Material.NETHERITE_PICKAXE), new ItemStack(Material.NETHERITE_PICKAXE)
+            }
+        );
+        netherMiner.register(plugin);
+        plugin.getLogger().info("基础机器已加载 - 下界矿机");
     }
 }
