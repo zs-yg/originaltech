@@ -29,8 +29,8 @@ public class OTOriginalWorkbench extends SlimefunItem {
         "&7在原版？工作台中合成"
     );
 
-    private static final int[] INPUT_SLOTS = {0, 1, 2, 3, 4, 5, 6, 7, 8};
-    private static final int[] OUTPUT_SLOTS = {18, 19, 20, 27, 28, 29, 36, 37, 38};
+    private static final int[] INPUT_SLOTS = {0, 1, 2, 9, 10, 11, 18, 19, 20};
+    private static final int OUTPUT_SLOT = 24;
 
     public OTOriginalWorkbench(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
@@ -58,21 +58,32 @@ public class OTOriginalWorkbench extends SlimefunItem {
                 if (flow == ItemTransportFlow.INSERT) {
                     return INPUT_SLOTS;
                 } else {
-                    return OUTPUT_SLOTS;
+                    return new int[]{OUTPUT_SLOT};
                 }
             }
         };
     }
 
     private void constructMenu(BlockMenuPreset preset) {
-        for (int i = 0; i < 45; i++) {
-            if (i == 4) {
-                preset.addItem(i, new ItemStack(Material.CRAFTING_TABLE), (p, slot, item, action) -> false);
-            } else if (i == 13) {
+        for (int i = 0; i < 27; i++) {
+            if (i == 13) {
                 preset.addItem(i, new ItemStack(Material.ARROW), (p, slot, item, action) -> false);
+            } else if (i == OUTPUT_SLOT) {
+                continue;
+            } else if (isInputSlot(i)) {
+                continue;
             } else {
                 preset.addItem(i, new ItemStack(Material.GRAY_STAINED_GLASS_PANE), (p, slot, item, action) -> false);
             }
         }
+    }
+
+    private boolean isInputSlot(int slot) {
+        for (int inputSlot : INPUT_SLOTS) {
+            if (inputSlot == slot) {
+                return true;
+            }
+        }
+        return false;
     }
 }

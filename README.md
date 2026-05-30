@@ -17,7 +17,7 @@
 
 ## 安装
 
-1. 下载 `OriginalTech-1.0.5.jar`
+1. 下载 `OriginalTech-1.0.6.jar`
 2. 将 jar 文件放入服务器的 `plugins` 文件夹
 3. 重启服务器
 4. 确保 Slimefun4 已安装并正常运行
