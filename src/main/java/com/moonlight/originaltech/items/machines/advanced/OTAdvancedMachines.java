@@ -1,0 +1,25 @@
+package com.moonlight.originaltech.items.machines.advanced;
+
+import com.moonlight.originaltech.OriginalTech;
+import com.moonlight.originaltech.items.machines.OTOriginalMiner;
+import com.moonlight.originaltech.setup.OTItemGroups;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+
+public class OTAdvancedMachines {
+
+    public static void setup(OriginalTech plugin) {
+        OTOriginalMiner2 miner2 = new OTOriginalMiner2(
+            OTItemGroups.ADVANCED_MACHINES_GROUP,
+            OTOriginalMiner2.ORIGINAL_MINER_2,
+            io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                new ItemStack(Material.NETHERITE_INGOT), new ItemStack(Material.AIR), new ItemStack(Material.NETHERITE_INGOT),
+                new ItemStack(Material.AIR), OTOriginalMiner.ORIGINAL_MINER, new ItemStack(Material.AIR),
+                new ItemStack(Material.NETHERITE_INGOT), new ItemStack(Material.AIR), new ItemStack(Material.NETHERITE_INGOT)
+            }
+        );
+        miner2.register(plugin);
+        plugin.getLogger().info("高级机器已加载 - 原版矿机 2.0");
+    }
+}

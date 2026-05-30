@@ -22,6 +22,7 @@ public class OTItemGroups {
     public static final NestedItemGroup OT_ITEM_GROUP;
     public static final SubItemGroup BASIC_MATERIALS_GROUP;
     public static final SubItemGroup BASIC_MACHINES_GROUP;
+    public static final SubItemGroup ADVANCED_MACHINES_GROUP;
 
     static {
         OT_ITEM_GROUP = new NestedItemGroup(
@@ -39,6 +40,12 @@ public class OTItemGroups {
             new NamespacedKey(OriginalTech.getInstance(), "basic_machines"),
             OT_ITEM_GROUP,
             createIcon(Material.FURNACE, ChatColor.GOLD + "基础机器")
+        );
+
+        ADVANCED_MACHINES_GROUP = new SubItemGroup(
+            new NamespacedKey(OriginalTech.getInstance(), "advanced_machines"),
+            OT_ITEM_GROUP,
+            createIcon(Material.ANVIL, ChatColor.DARK_PURPLE + "高级机器")
         );
     }
 }
