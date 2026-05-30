@@ -16,6 +16,7 @@ public class OriginalTech extends JavaPlugin implements SlimefunAddon {
         Config cfg = new Config(this);
 
         new OTSetup().setup(this);
+        
         getLogger().info("原版科技插件加载成功！");
     }
 

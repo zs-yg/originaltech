@@ -2,8 +2,8 @@ package com.moonlight.originaltech.items.machines.advanced;
 
 import com.moonlight.originaltech.OriginalTech;
 import com.moonlight.originaltech.items.machines.OTOriginalMiner;
-import com.moonlight.originaltech.items.machines.OTOriginalWorkbench;
 import com.moonlight.originaltech.setup.OTItemGroups;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -13,7 +13,7 @@ public class OTAdvancedMachines {
         OTOriginalMiner2 miner2 = new OTOriginalMiner2(
             OTItemGroups.ADVANCED_MACHINES_GROUP,
             OTOriginalMiner2.ORIGINAL_MINER_2,
-            OTOriginalWorkbench.ORIGINAL_WORKBENCH_RECIPE_TYPE,
+            RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                 new ItemStack(Material.NETHERITE_INGOT), new ItemStack(Material.AIR), new ItemStack(Material.NETHERITE_INGOT),
                 new ItemStack(Material.AIR), OTOriginalMiner.ORIGINAL_MINER, new ItemStack(Material.AIR),
@@ -26,7 +26,7 @@ public class OTAdvancedMachines {
         OTOriginalMiner3 miner3 = new OTOriginalMiner3(
             OTItemGroups.ADVANCED_MACHINES_GROUP,
             OTOriginalMiner3.ORIGINAL_MINER_3,
-            OTOriginalWorkbench.ORIGINAL_WORKBENCH_RECIPE_TYPE,
+            RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[]{
                 OTOriginalMiner2.ORIGINAL_MINER_2, OTOriginalMiner2.ORIGINAL_MINER_2, OTOriginalMiner2.ORIGINAL_MINER_2,
                 OTOriginalMiner2.ORIGINAL_MINER_2, new ItemStack(Material.DIAMOND_PICKAXE), OTOriginalMiner2.ORIGINAL_MINER_2,
