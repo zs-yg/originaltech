@@ -21,5 +21,18 @@ public class OTAdvancedMachines {
         );
         miner2.register(plugin);
         plugin.getLogger().info("高级机器已加载 - 原版矿机 2.0");
+
+        OTOriginalMiner3 miner3 = new OTOriginalMiner3(
+            OTItemGroups.ADVANCED_MACHINES_GROUP,
+            OTOriginalMiner3.ORIGINAL_MINER_3,
+            io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                OTOriginalMiner2.ORIGINAL_MINER_2, OTOriginalMiner2.ORIGINAL_MINER_2, OTOriginalMiner2.ORIGINAL_MINER_2,
+                OTOriginalMiner2.ORIGINAL_MINER_2, new ItemStack(Material.DIAMOND_PICKAXE), OTOriginalMiner2.ORIGINAL_MINER_2,
+                OTOriginalMiner2.ORIGINAL_MINER_2, OTOriginalMiner2.ORIGINAL_MINER_2, OTOriginalMiner2.ORIGINAL_MINER_2
+            }
+        );
+        miner3.register(plugin);
+        plugin.getLogger().info("高级机器已加载 - 原版矿机 3.0");
     }
 }
