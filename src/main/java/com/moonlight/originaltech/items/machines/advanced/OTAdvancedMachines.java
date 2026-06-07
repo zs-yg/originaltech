@@ -1,6 +1,7 @@
 package com.moonlight.originaltech.items.machines.advanced;
 
 import com.moonlight.originaltech.OriginalTech;
+import com.moonlight.originaltech.items.machines.OTDisassemblyTable;
 import com.moonlight.originaltech.items.machines.OTOriginalMiner;
 import com.moonlight.originaltech.setup.OTItemGroups;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -35,5 +36,18 @@ public class OTAdvancedMachines {
         );
         miner3.register(plugin);
         plugin.getLogger().info("高级机器已加载 - 原版矿机 3.0");
+
+        OTDisassemblyTable disassemblyTable = new OTDisassemblyTable(
+            OTItemGroups.ADVANCED_MACHINES_GROUP,
+            OTDisassemblyTable.DISASSEMBLY_TABLE,
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                new ItemStack(Material.STICKY_PISTON), new ItemStack(Material.TNT), new ItemStack(Material.STICKY_PISTON),
+                new ItemStack(Material.TNT), new ItemStack(Material.CRAFTING_TABLE), new ItemStack(Material.TNT),
+                new ItemStack(Material.STICKY_PISTON), new ItemStack(Material.TNT), new ItemStack(Material.STICKY_PISTON)
+            }
+        );
+        disassemblyTable.register(plugin);
+        plugin.getLogger().info("高级机器已加载 - 拆解台");
     }
 }

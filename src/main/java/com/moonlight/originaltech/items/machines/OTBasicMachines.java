@@ -1,7 +1,6 @@
 package com.moonlight.originaltech.items.machines;
 
 import com.moonlight.originaltech.OriginalTech;
-import com.moonlight.originaltech.items.materials.OTMaterials;
 import com.moonlight.originaltech.setup.OTItemGroups;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import org.bukkit.Material;
