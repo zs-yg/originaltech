@@ -24,6 +24,7 @@ public class OTItemGroups {
     public static SubItemGroup BASIC_MATERIALS_GROUP;
     public static SubItemGroup BASIC_MACHINES_GROUP;
     public static SubItemGroup ADVANCED_MACHINES_GROUP;
+    public static SubItemGroup GENERATORS_GROUP;
 
     public static void initialize() {
         OT_ITEM_GROUP = new NestedItemGroup(
@@ -48,6 +49,12 @@ public class OTItemGroups {
             OT_ITEM_GROUP,
             createIcon(Material.ANVIL, ChatColor.DARK_PURPLE + "高级机器")
         );
+        
+        GENERATORS_GROUP = new SubItemGroup(
+            new NamespacedKey(OriginalTech.getInstance(), "generators"),
+            OT_ITEM_GROUP,
+            createIcon(Material.REDSTONE_BLOCK, ChatColor.RED + "发电机")
+        );
     }
     
     public static void register(SlimefunAddon addon) {
@@ -55,5 +62,6 @@ public class OTItemGroups {
         BASIC_MATERIALS_GROUP.register(addon);
         BASIC_MACHINES_GROUP.register(addon);
         ADVANCED_MACHINES_GROUP.register(addon);
+        GENERATORS_GROUP.register(addon);
     }
 }
