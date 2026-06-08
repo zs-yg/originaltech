@@ -48,5 +48,18 @@ public class OTBasicMachines {
         );
         endMiner.register(plugin);
         plugin.getLogger().info("基础机器已加载 - 末地矿机");
+
+        OTCobblestoneHeater cobblestoneHeater = new OTCobblestoneHeater(
+            OTItemGroups.BASIC_MACHINES_GROUP,
+            OTCobblestoneHeater.COBBLESTONE_HEATER,
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                new ItemStack(Material.COBBLESTONE), new ItemStack(Material.FURNACE), new ItemStack(Material.COBBLESTONE),
+                new ItemStack(Material.FURNACE), new ItemStack(Material.REDSTONE_BLOCK), new ItemStack(Material.FURNACE),
+                new ItemStack(Material.COBBLESTONE), new ItemStack(Material.FURNACE), new ItemStack(Material.COBBLESTONE)
+            }
+        );
+        cobblestoneHeater.register(plugin);
+        plugin.getLogger().info("基础机器已加载 - 原石加热工厂");
     }
 }

@@ -1,6 +1,7 @@
 package com.moonlight.originaltech.setup;
 
 import com.moonlight.originaltech.OriginalTech;
+import com.moonlight.originaltech.items.OTAuthorItem;
 import com.moonlight.originaltech.items.materials.OTMaterials;
 import com.moonlight.originaltech.items.machines.OTMachines;
 import com.moonlight.originaltech.items.machines.advanced.OTAdvancedMachines;
@@ -26,6 +27,10 @@ public class OTSetup {
         
         plugin.getLogger().info("正在注册发电机...");
         OTGenerators.setup(plugin);
+        
+        plugin.getLogger().info("正在注册作者信息...");
+        OTAuthorItem authorItem = new OTAuthorItem();
+        authorItem.register(plugin);
         
         plugin.getLogger().info("物品注册完成");
         plugin.getLogger().info("原版科技插件已完全加载！");

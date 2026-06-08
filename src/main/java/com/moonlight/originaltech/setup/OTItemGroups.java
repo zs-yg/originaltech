@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 import net.md_5.bungee.api.ChatColor;
 
 public class OTItemGroups {
@@ -21,11 +22,22 @@ public class OTItemGroups {
         return icon;
     }
 
+    @SuppressWarnings("deprecation")
+    public static ItemStack createPlayerHead(String playerName, String name) {
+        ItemStack icon = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta meta = (SkullMeta) icon.getItemMeta();
+        meta.setDisplayName(name);
+        meta.setOwner(playerName);
+        icon.setItemMeta(meta);
+        return icon;
+    }
+
     public static NestedItemGroup OT_ITEM_GROUP;
     public static SubItemGroup BASIC_MATERIALS_GROUP;
     public static SubItemGroup BASIC_MACHINES_GROUP;
     public static SubItemGroup ADVANCED_MACHINES_GROUP;
     public static SubItemGroup GENERATORS_GROUP;
+    public static SubItemGroup AUTHOR_GROUP;
 
     @SuppressWarnings("null")
     public static void initialize() {
@@ -57,6 +69,12 @@ public class OTItemGroups {
             OT_ITEM_GROUP,
             createIcon(Material.REDSTONE_BLOCK, ChatColor.RED + "发电机")
         );
+        
+        AUTHOR_GROUP = new SubItemGroup(
+            new NamespacedKey(OriginalTech.getInstance(), "author"),
+            OT_ITEM_GROUP,
+            createPlayerHead("moonlight_awa", ChatColor.LIGHT_PURPLE + "作者")
+        );
     }
     
     @SuppressWarnings("null")
@@ -66,5 +84,6 @@ public class OTItemGroups {
         BASIC_MACHINES_GROUP.register(addon);
         ADVANCED_MACHINES_GROUP.register(addon);
         GENERATORS_GROUP.register(addon);
+        AUTHOR_GROUP.register(addon);
     }
 }
