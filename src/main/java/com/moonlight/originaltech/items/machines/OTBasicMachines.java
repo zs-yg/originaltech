@@ -8,6 +8,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class OTBasicMachines {
 
+    @SuppressWarnings("null")
     public static void setup(OriginalTech plugin) {
         OTOriginalMiner miner = new OTOriginalMiner(
             OTItemGroups.BASIC_MACHINES_GROUP,

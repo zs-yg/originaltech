@@ -12,6 +12,7 @@ import net.md_5.bungee.api.ChatColor;
 
 public class OTItemGroups {
 
+    @SuppressWarnings("deprecation")
     public static ItemStack createIcon(Material material, String name) {
         ItemStack icon = new ItemStack(material);
         ItemMeta meta = icon.getItemMeta();
@@ -26,6 +27,7 @@ public class OTItemGroups {
     public static SubItemGroup ADVANCED_MACHINES_GROUP;
     public static SubItemGroup GENERATORS_GROUP;
 
+    @SuppressWarnings("null")
     public static void initialize() {
         OT_ITEM_GROUP = new NestedItemGroup(
             new NamespacedKey(OriginalTech.getInstance(), "original_tech"),
@@ -57,6 +59,7 @@ public class OTItemGroups {
         );
     }
     
+    @SuppressWarnings("null")
     public static void register(SlimefunAddon addon) {
         OT_ITEM_GROUP.register(addon);
         BASIC_MATERIALS_GROUP.register(addon);

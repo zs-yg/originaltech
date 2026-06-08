@@ -5,10 +5,12 @@ import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 import org.bukkit.plugin.java.JavaPlugin;
 
+@SuppressWarnings("null")
 public class OriginalTech extends JavaPlugin implements SlimefunAddon {
 
     private static OriginalTech instance;
 
+    @SuppressWarnings("unused")
     @Override
     public void onEnable() {
         instance = this;
@@ -26,6 +28,7 @@ public class OriginalTech extends JavaPlugin implements SlimefunAddon {
         instance = null;
     }
 
+    @SuppressWarnings("null")
     @Override
     public JavaPlugin getJavaPlugin() {
         return this;

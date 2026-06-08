@@ -16,6 +16,7 @@ public class OTMaterials {
         "&b原版硅"
     );
 
+    @SuppressWarnings("null")
     public static void setup(OriginalTech plugin) {
         new SlimefunItem(
             OTItemGroups.BASIC_MATERIALS_GROUP,

@@ -33,8 +33,9 @@ public class OTWaterFlowGenerator extends SlimefunItem implements EnergyNetProvi
         super(category, item, recipeType, recipe);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
-    public int getGeneratedOutput(Location location, Config config) {
+    public int getGeneratedOutput(@SuppressWarnings("null") Location location, @SuppressWarnings("null") Config config) {
         return ENERGY_PRODUCTION;
     }
 
@@ -43,6 +44,7 @@ public class OTWaterFlowGenerator extends SlimefunItem implements EnergyNetProvi
         return CAPACITY;
     }
 
+    @SuppressWarnings("null")
     @Override
     public List<ItemStack> getDisplayRecipes() {
         List<ItemStack> items = new ArrayList<>();

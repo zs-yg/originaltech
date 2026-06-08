@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+@SuppressWarnings("unused")
 public class OTNetherMiner extends AContainer implements MachineProcessHolder<CraftingOperation>, RecipeDisplayItem {
 
     private static final int ENERGY_CONSUMPTION = 20;
@@ -55,6 +56,7 @@ public class OTNetherMiner extends AContainer implements MachineProcessHolder<Cr
         super(category, item, recipeType, recipe);
     }
 
+    @SuppressWarnings("null")
     @Override
     public MachineProcessor<CraftingOperation> getMachineProcessor() {
         return processor;
@@ -65,6 +67,7 @@ public class OTNetherMiner extends AContainer implements MachineProcessHolder<Cr
         return new ItemStack(Material.NETHERITE_PICKAXE);
     }
 
+    @SuppressWarnings("null")
     @Override
     public void tick(Block block) {
         BlockMenu menu = BlockStorage.getInventory(block);
@@ -115,11 +118,13 @@ public class OTNetherMiner extends AContainer implements MachineProcessHolder<Cr
         return new ItemStack(Material.GLOWSTONE);
     }
 
+    @SuppressWarnings("null")
     @Override
     public String getInventoryTitle() {
         return "下界矿机";
     }
 
+    @SuppressWarnings("null")
     @Override
     public String getMachineIdentifier() {
         return "OT_NETHER_MINER";
@@ -144,6 +149,7 @@ public class OTNetherMiner extends AContainer implements MachineProcessHolder<Cr
     protected void registerDefaultRecipes() {
     }
 
+    @SuppressWarnings("null")
     @Override
     public List<ItemStack> getDisplayRecipes() {
         List<ItemStack> items = new ArrayList<>();

@@ -8,6 +8,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class OTGenerators {
 
+    @SuppressWarnings("null")
     public static void setup(OriginalTech plugin) {
         OTWaterFlowGenerator generator = new OTWaterFlowGenerator(
             OTItemGroups.GENERATORS_GROUP,

@@ -1,6 +1,5 @@
 package com.moonlight.originaltech.items.machines.advanced;
 
-import com.moonlight.originaltech.setup.OTItemGroups;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -22,6 +21,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+@SuppressWarnings("unused")
 public class OTOriginalMiner2 extends AContainer implements MachineProcessHolder<CraftingOperation>, RecipeDisplayItem {
 
     private static final int ENERGY_CONSUMPTION = 18;
@@ -55,6 +55,7 @@ public class OTOriginalMiner2 extends AContainer implements MachineProcessHolder
         super(category, item, recipeType, recipe);
     }
 
+    @SuppressWarnings("null")
     @Override
     public MachineProcessor<CraftingOperation> getMachineProcessor() {
         return processor;
@@ -65,6 +66,7 @@ public class OTOriginalMiner2 extends AContainer implements MachineProcessHolder
         return new ItemStack(Material.DIAMOND_PICKAXE);
     }
 
+    @SuppressWarnings("null")
     @Override
     public void tick(Block block) {
         BlockMenu menu = BlockStorage.getInventory(block);
@@ -115,11 +117,13 @@ public class OTOriginalMiner2 extends AContainer implements MachineProcessHolder
         return new ItemStack(Material.LAPIS_LAZULI);
     }
 
+    @SuppressWarnings("null")
     @Override
     public String getInventoryTitle() {
         return "原版矿机 2.0";
     }
 
+    @SuppressWarnings("null")
     @Override
     public String getMachineIdentifier() {
         return "OT_ORIGINAL_MINER_2";
@@ -144,6 +148,7 @@ public class OTOriginalMiner2 extends AContainer implements MachineProcessHolder
     protected void registerDefaultRecipes() {
     }
 
+    @SuppressWarnings("null")
     @Override
     public List<ItemStack> getDisplayRecipes() {
         List<ItemStack> items = new ArrayList<>();

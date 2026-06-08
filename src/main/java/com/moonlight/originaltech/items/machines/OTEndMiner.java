@@ -1,6 +1,5 @@
 package com.moonlight.originaltech.items.machines;
 
-import com.moonlight.originaltech.setup.OTItemGroups;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -22,6 +21,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+@SuppressWarnings("unused")
 public class OTEndMiner extends AContainer implements MachineProcessHolder<CraftingOperation>, RecipeDisplayItem {
 
     private static final int ENERGY_CONSUMPTION = 25;
@@ -54,6 +54,7 @@ public class OTEndMiner extends AContainer implements MachineProcessHolder<Craft
         super(category, item, recipeType, recipe);
     }
 
+    @SuppressWarnings("null")
     @Override
     public MachineProcessor<CraftingOperation> getMachineProcessor() {
         return processor;
@@ -64,6 +65,7 @@ public class OTEndMiner extends AContainer implements MachineProcessHolder<Craft
         return new ItemStack(Material.DIAMOND_PICKAXE);
     }
 
+    @SuppressWarnings("null")
     @Override
     public void tick(Block block) {
         BlockMenu menu = BlockStorage.getInventory(block);
@@ -114,11 +116,13 @@ public class OTEndMiner extends AContainer implements MachineProcessHolder<Craft
         return new ItemStack(Material.CHORUS_FLOWER);
     }
 
+    @SuppressWarnings("null")
     @Override
     public String getInventoryTitle() {
         return "末地矿机";
     }
 
+    @SuppressWarnings("null")
     @Override
     public String getMachineIdentifier() {
         return "OT_END_MINER";
@@ -143,6 +147,7 @@ public class OTEndMiner extends AContainer implements MachineProcessHolder<Craft
     protected void registerDefaultRecipes() {
     }
 
+    @SuppressWarnings("null")
     @Override
     public List<ItemStack> getDisplayRecipes() {
         List<ItemStack> items = new ArrayList<>();
