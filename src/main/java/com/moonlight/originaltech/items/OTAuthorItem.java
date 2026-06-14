@@ -12,6 +12,7 @@ public class OTAuthorItem extends SlimefunItem {
 
     public static final SlimefunItemStack AUTHOR_HEAD = createPlayerHead();
 
+    @SuppressWarnings("deprecation")
     private static SlimefunItemStack createPlayerHead() {
         ItemStack item = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) item.getItemMeta();

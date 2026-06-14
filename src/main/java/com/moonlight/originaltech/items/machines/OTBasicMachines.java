@@ -1,6 +1,7 @@
 package com.moonlight.originaltech.items.machines;
 
 import com.moonlight.originaltech.OriginalTech;
+import com.moonlight.originaltech.items.materials.OTMaterials;
 import com.moonlight.originaltech.setup.OTItemGroups;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import org.bukkit.Material;
@@ -61,5 +62,18 @@ public class OTBasicMachines {
         );
         cobblestoneHeater.register(plugin);
         plugin.getLogger().info("基础机器已加载 - 原石加热工厂");
+
+        OTElectricMixer electricMixer = new OTElectricMixer(
+            OTItemGroups.BASIC_MACHINES_GROUP,
+            OTElectricMixer.ELECTRIC_MIXER,
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                OTMaterials.SILICON, OTMaterials.SILICON, OTMaterials.SILICON,
+                OTMaterials.SILICON, io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems.COMPOSTER, OTMaterials.SILICON,
+                OTMaterials.SILICON, OTMaterials.SILICON, OTMaterials.SILICON
+            }
+        );
+        electricMixer.register(plugin);
+        plugin.getLogger().info("基础机器已加载 - 电动搅拌机");
     }
 }

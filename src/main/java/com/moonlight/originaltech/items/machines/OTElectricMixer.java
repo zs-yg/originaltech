@@ -1,5 +1,6 @@
 package com.moonlight.originaltech.items.machines;
 
+import com.moonlight.originaltech.items.materials.OTMaterials;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -17,30 +18,32 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("unused")
-public class OTCobblestoneHeater extends AContainer implements MachineProcessHolder<CraftingOperation>, RecipeDisplayItem {
+public class OTElectricMixer extends AContainer implements MachineProcessHolder<CraftingOperation>, RecipeDisplayItem {
 
-    private static final int ENERGY_CONSUMPTION = 40;
-    private static final int CAPACITY = 200;
+    private static final int ENERGY_CONSUMPTION = 10;
+    private static final int CAPACITY = 100;
     private static final int PROCESSING_TIME = 20;
 
     private final MachineProcessor<CraftingOperation> processor = new MachineProcessor<>(this);
 
-    public static final SlimefunItemStack COBBLESTONE_HEATER = new SlimefunItemStack(
-        "OT_COBBLESTONE_HEATER",
-        Material.FURNACE,
-        "&c原石加热工厂",
+    public static final SlimefunItemStack ELECTRIC_MIXER = new SlimefunItemStack(
+        "OT_ELECTRIC_MIXER",
+        Material.CAULDRON,
+        "&6电动搅拌机",
         "",
-        "&7将原石加热生成石头",
-        "&7消耗: &e40 J/s",
-        "&7储存: &6200 J"
+        "&7将材料混合转换",
+        "&7消耗: &e10 J/s",
+        "&7储存: &6100 J",
+        "",
+        "&8石头 x4 > 下界岩",
+        "&8沙子 x2 > 灵魂沙",
+        "&8小麦 x4 > 下界疣"
     );
 
-    public OTCobblestoneHeater(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public OTElectricMixer(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
     }
 
-    @SuppressWarnings("null")
     @Override
     public MachineProcessor<CraftingOperation> getMachineProcessor() {
         return processor;
@@ -48,21 +51,20 @@ public class OTCobblestoneHeater extends AContainer implements MachineProcessHol
 
     @Override
     public ItemStack getProgressBar() {
-        return new ItemStack(Material.FLINT_AND_STEEL);
+        return new ItemStack(Material.WATER_BUCKET);
     }
 
-    @SuppressWarnings("null")
     @Override
     public void tick(Block block) {
         BlockMenu menu = BlockStorage.getInventory(block);
         if (menu == null) return;
 
-        // 检查所有输入槽，找到有原石的槽
         ItemStack input = null;
         int inputSlot = -1;
+        
         for (int slot : getInputSlots()) {
             ItemStack item = menu.getItemInSlot(slot);
-            if (item != null && item.getType() == Material.COBBLESTONE) {
+            if (item != null && (item.getType() == Material.STONE || item.getType() == Material.SAND || item.getType() == Material.WHEAT)) {
                 input = item;
                 inputSlot = slot;
                 break;
@@ -77,28 +79,51 @@ public class OTCobblestoneHeater extends AContainer implements MachineProcessHol
             return;
         }
 
-        removeCharge(block.getLocation(), ENERGY_CONSUMPTION);
+        ItemStack output = null;
+        int requiredAmount = 0;
 
-        ItemStack stone = new ItemStack(Material.STONE);
+        switch (input.getType()) {
+            case STONE:
+                if (input.getAmount() >= 4) {
+                    output = new ItemStack(Material.NETHERRACK);
+                    requiredAmount = 4;
+                }
+                break;
+            case SAND:
+                if (input.getAmount() >= 2) {
+                    output = new ItemStack(Material.SOUL_SAND);
+                    requiredAmount = 2;
+                }
+                break;
+            case WHEAT:
+                if (input.getAmount() >= 4) {
+                    output = new ItemStack(Material.NETHER_WART);
+                    requiredAmount = 4;
+                }
+                break;
+        }
 
-        if (!menu.fits(stone, getOutputSlots())) {
+        if (output == null) {
             return;
         }
 
-        input.setAmount(input.getAmount() - 1);
-        menu.pushItem(stone, getOutputSlots());
+        if (!menu.fits(output, getOutputSlots())) {
+            return;
+        }
+
+        removeCharge(block.getLocation(), ENERGY_CONSUMPTION);
+        input.setAmount(input.getAmount() - requiredAmount);
+        menu.pushItem(output, getOutputSlots());
     }
 
-    @SuppressWarnings("null")
     @Override
     public String getInventoryTitle() {
-        return "原石加热工厂";
+        return "电动搅拌机";
     }
 
-    @SuppressWarnings("null")
     @Override
     public String getMachineIdentifier() {
-        return "OT_COBBLESTONE_HEATER";
+        return "OT_ELECTRIC_MIXER";
     }
 
     @Override
@@ -120,12 +145,15 @@ public class OTCobblestoneHeater extends AContainer implements MachineProcessHol
     protected void registerDefaultRecipes() {
     }
 
-    @SuppressWarnings("null")
     @Override
     public List<ItemStack> getDisplayRecipes() {
         List<ItemStack> items = new ArrayList<>();
-        items.add(new ItemStack(Material.COBBLESTONE));
-        items.add(new ItemStack(Material.STONE));
+        items.add(new ItemStack(Material.STONE, 4));
+        items.add(new ItemStack(Material.NETHERRACK));
+        items.add(new ItemStack(Material.SAND, 2));
+        items.add(new ItemStack(Material.SOUL_SAND));
+        items.add(new ItemStack(Material.WHEAT, 4));
+        items.add(new ItemStack(Material.NETHER_WART));
         return items;
     }
 }
