@@ -75,5 +75,17 @@ public class OTBasicMachines {
         );
         electricMixer.register(plugin);
         plugin.getLogger().info("基础机器已加载 - 电动搅拌机");
+
+        OTHighTempHeater highTempHeater = new OTHighTempHeater(
+            OTItemGroups.BASIC_MACHINES_GROUP,
+            OTHighTempHeater.HIGH_TEMP_HEATER,
+            new ItemStack[]{
+                new ItemStack(Material.AIR), new ItemStack(Material.BLAST_FURNACE), new ItemStack(Material.AIR),
+                OTMaterials.SILICON, new ItemStack(Material.DISPENSER), OTMaterials.SILICON,
+                new ItemStack(Material.AIR), new ItemStack(Material.FLINT_AND_STEEL), new ItemStack(Material.AIR)
+            }
+        );
+        highTempHeater.register(plugin);
+        plugin.getLogger().info("基础机器已加载 - 高温加热炉");
     }
 }
