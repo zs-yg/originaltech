@@ -3,89 +3,66 @@ package com.moonlight.originaltech.items.machines;
 import com.moonlight.originaltech.OriginalTech;
 import com.moonlight.originaltech.items.materials.OTMaterials;
 import com.moonlight.originaltech.setup.OTItemGroups;
+import com.moonlight.originaltech.utils.RegisterUtils;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 public class OTBasicMachines {
 
-    @SuppressWarnings("null")
     public static void setup(OriginalTech plugin) {
-        OTOriginalMiner miner = new OTOriginalMiner(
-            OTItemGroups.BASIC_MACHINES_GROUP,
-            OTOriginalMiner.ORIGINAL_MINER,
-            RecipeType.ENHANCED_CRAFTING_TABLE,
-            new ItemStack[]{
-                new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.DIAMOND_PICKAXE),
-                new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.STONE), new ItemStack(Material.DIAMOND_PICKAXE),
-                new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.DIAMOND_PICKAXE)
-            }
+        // 原版矿机 - 8钻石镐围石头
+        RegisterUtils.register(
+            new OTOriginalMiner(OTItemGroups.BASIC_MACHINES_GROUP, OTOriginalMiner.ORIGINAL_MINER,
+                RecipeType.ENHANCED_CRAFTING_TABLE,
+                RegisterUtils.surroundRecipe(new ItemStack(Material.STONE), new ItemStack(Material.DIAMOND_PICKAXE))),
+            plugin, "原版矿机"
         );
-        miner.register(plugin);
-        plugin.getLogger().info("基础机器已加载 - 原版矿机");
 
-        OTNetherMiner netherMiner = new OTNetherMiner(
-            OTItemGroups.BASIC_MACHINES_GROUP,
-            OTNetherMiner.NETHER_MINER,
-            RecipeType.ENHANCED_CRAFTING_TABLE,
-            new ItemStack[]{
-                new ItemStack(Material.NETHERITE_PICKAXE), new ItemStack(Material.NETHERITE_PICKAXE), new ItemStack(Material.NETHERITE_PICKAXE),
-                new ItemStack(Material.NETHERITE_PICKAXE), new ItemStack(Material.NETHERRACK), new ItemStack(Material.NETHERITE_PICKAXE),
-                new ItemStack(Material.NETHERITE_PICKAXE), new ItemStack(Material.NETHERITE_PICKAXE), new ItemStack(Material.NETHERITE_PICKAXE)
-            }
+        // 下界矿机 - 8下界合金镐围下界岩
+        RegisterUtils.register(
+            new OTNetherMiner(OTItemGroups.BASIC_MACHINES_GROUP, OTNetherMiner.NETHER_MINER,
+                RecipeType.ENHANCED_CRAFTING_TABLE,
+                RegisterUtils.surroundRecipe(new ItemStack(Material.NETHERRACK), new ItemStack(Material.NETHERITE_PICKAXE))),
+            plugin, "下界矿机"
         );
-        netherMiner.register(plugin);
-        plugin.getLogger().info("基础机器已加载 - 下界矿机");
 
-        OTEndMiner endMiner = new OTEndMiner(
-            OTItemGroups.BASIC_MACHINES_GROUP,
-            OTEndMiner.END_MINER,
-            RecipeType.ENHANCED_CRAFTING_TABLE,
-            new ItemStack[]{
-                new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.DIAMOND_PICKAXE),
-                new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.END_STONE), new ItemStack(Material.DIAMOND_PICKAXE),
-                new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.DIAMOND_PICKAXE)
-            }
+        // 末地矿机 - 8钻石镐围末地石
+        RegisterUtils.register(
+            new OTEndMiner(OTItemGroups.BASIC_MACHINES_GROUP, OTEndMiner.END_MINER,
+                RecipeType.ENHANCED_CRAFTING_TABLE,
+                RegisterUtils.surroundRecipe(new ItemStack(Material.END_STONE), new ItemStack(Material.DIAMOND_PICKAXE))),
+            plugin, "末地矿机"
         );
-        endMiner.register(plugin);
-        plugin.getLogger().info("基础机器已加载 - 末地矿机");
 
-        OTCobblestoneHeater cobblestoneHeater = new OTCobblestoneHeater(
-            OTItemGroups.BASIC_MACHINES_GROUP,
-            OTCobblestoneHeater.COBBLESTONE_HEATER,
-            RecipeType.ENHANCED_CRAFTING_TABLE,
-            new ItemStack[]{
-                new ItemStack(Material.COBBLESTONE), new ItemStack(Material.FURNACE), new ItemStack(Material.COBBLESTONE),
-                new ItemStack(Material.FURNACE), new ItemStack(Material.REDSTONE_BLOCK), new ItemStack(Material.FURNACE),
-                new ItemStack(Material.COBBLESTONE), new ItemStack(Material.FURNACE), new ItemStack(Material.COBBLESTONE)
-            }
+        // 原石加热工厂 - 原石和熔炉围红石块
+        RegisterUtils.register(
+            new OTCobblestoneHeater(OTItemGroups.BASIC_MACHINES_GROUP, OTCobblestoneHeater.COBBLESTONE_HEATER,
+                RecipeType.ENHANCED_CRAFTING_TABLE,
+                RegisterUtils.recipe(
+                    new ItemStack(Material.COBBLESTONE), new ItemStack(Material.FURNACE), new ItemStack(Material.COBBLESTONE),
+                    new ItemStack(Material.FURNACE), new ItemStack(Material.REDSTONE_BLOCK), new ItemStack(Material.FURNACE),
+                    new ItemStack(Material.COBBLESTONE), new ItemStack(Material.FURNACE), new ItemStack(Material.COBBLESTONE))),
+            plugin, "原石加热工厂"
         );
-        cobblestoneHeater.register(plugin);
-        plugin.getLogger().info("基础机器已加载 - 原石加热工厂");
 
-        OTElectricMixer electricMixer = new OTElectricMixer(
-            OTItemGroups.BASIC_MACHINES_GROUP,
-            OTElectricMixer.ELECTRIC_MIXER,
-            RecipeType.ENHANCED_CRAFTING_TABLE,
-            new ItemStack[]{
-                OTMaterials.SILICON, OTMaterials.SILICON, OTMaterials.SILICON,
-                OTMaterials.SILICON, io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems.COMPOSTER, OTMaterials.SILICON,
-                OTMaterials.SILICON, OTMaterials.SILICON, OTMaterials.SILICON
-            }
+        // 电动搅拌机 - 8原版硅围堆肥桶
+        RegisterUtils.register(
+            new OTElectricMixer(OTItemGroups.BASIC_MACHINES_GROUP, OTElectricMixer.ELECTRIC_MIXER,
+                RecipeType.ENHANCED_CRAFTING_TABLE,
+                RegisterUtils.surroundRecipe(SlimefunItems.COMPOSTER, OTMaterials.SILICON)),
+            plugin, "电动搅拌机"
         );
-        electricMixer.register(plugin);
-        plugin.getLogger().info("基础机器已加载 - 电动搅拌机");
 
-        OTHighTempHeater highTempHeater = new OTHighTempHeater(
-            OTItemGroups.BASIC_MACHINES_GROUP,
-            OTHighTempHeater.HIGH_TEMP_HEATER,
-            new ItemStack[]{
-                new ItemStack(Material.AIR), new ItemStack(Material.BLAST_FURNACE), new ItemStack(Material.AIR),
-                OTMaterials.SILICON, new ItemStack(Material.DISPENSER), OTMaterials.SILICON,
-                new ItemStack(Material.AIR), new ItemStack(Material.FLINT_AND_STEEL), new ItemStack(Material.AIR)
-            }
+        // 高温加热炉 - 多方块结构
+        RegisterUtils.register(
+            new OTHighTempHeater(OTItemGroups.BASIC_MACHINES_GROUP, OTHighTempHeater.HIGH_TEMP_HEATER,
+                RegisterUtils.recipe(
+                    new ItemStack(Material.AIR), new ItemStack(Material.BLAST_FURNACE), new ItemStack(Material.AIR),
+                    OTMaterials.SILICON, new ItemStack(Material.DISPENSER), OTMaterials.SILICON,
+                    new ItemStack(Material.AIR), new ItemStack(Material.FLINT_AND_STEEL), new ItemStack(Material.AIR))),
+            plugin, "高温加热炉"
         );
-        highTempHeater.register(plugin);
-        plugin.getLogger().info("基础机器已加载 - 高温加热炉");
     }
 }

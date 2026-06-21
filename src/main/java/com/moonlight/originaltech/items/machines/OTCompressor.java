@@ -53,7 +53,8 @@ public class OTCompressor extends MultiBlockMachine {
 
     @Override
     public void onInteract(Player p, Block b) {
-        Block dispenserBlock = b.getRelative(BlockFace.DOWN);
+        Block centerPiston = b.getRelative(BlockFace.DOWN);
+        Block dispenserBlock = centerPiston.getRelative(BlockFace.DOWN);
 
         if (dispenserBlock.getType() != Material.DISPENSER) {
             return;

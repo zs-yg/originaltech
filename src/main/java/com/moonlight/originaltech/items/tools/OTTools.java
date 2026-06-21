@@ -3,13 +3,16 @@ package com.moonlight.originaltech.items.tools;
 import com.moonlight.originaltech.OriginalTech;
 import com.moonlight.originaltech.items.materials.OTIronMaterials;
 import com.moonlight.originaltech.setup.OTItemGroups;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ToolUseHandler;
-import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import javax.annotation.Nonnull;
 
 public class OTTools {
 
@@ -17,30 +20,29 @@ public class OTTools {
 
     static {
         ItemStack baseItem = new ItemStack(Material.NETHERITE_PICKAXE);
+        @Nonnull ItemMeta meta = baseItem.getItemMeta();
+        meta.setUnbreakable(true);
+        baseItem.setItemMeta(meta);
         baseItem.addUnsafeEnchantment(Enchantment.EFFICIENCY, 100);
-        baseItem.addUnsafeEnchantment(Enchantment.UNBREAKING, 255);
         baseItem.addUnsafeEnchantment(Enchantment.FORTUNE, 100);
         baseItem.addUnsafeEnchantment(Enchantment.MENDING, 1);
 
         CORE_PICKAXE = new SlimefunItemStack(
             "OT_CORE_PICKAXE",
             baseItem,
-            "&k&b&l核心稿&r &6&l[终极]",
+            "&k&b&l核心稿",
             "",
-            "&c&l✦ 终极神器 ✦",
-            "&e效率 C &7- &d瞬间挖掘",
-            "&e时运 C &7- &d矿藏倍加",
-            "&e耐久 X &7- &d无限耐久",
-            "&e经验修补 &7- &d自我修复",
-            "&5据说这把稿子强大到无可比拟(堪比无尽)",
-            "&5&o凝聚了核心铁块的终极力量",
-            "&8&o只有最强大的玩家才能驾驭"
+            "&c这稿子有点厉害",
+            "&e效率 C - 瞬间挖掘",
+            "&e时运 C - 矿藏倍增",
+            "&e无法破坏",
+            "&e经验修补",
+            "&5用核心铁块做的，应该很强吧"
         );
     }
 
-    @SuppressWarnings("null")
     public static void setup(OriginalTech plugin) {
-        SimpleSlimefunItem<ToolUseHandler> corePickaxe = new SimpleSlimefunItem<>(
+        SlimefunItem corePickaxe = new SlimefunItem(
             OTItemGroups.TOOLS_GROUP,
             CORE_PICKAXE,
             RecipeType.ENHANCED_CRAFTING_TABLE,
@@ -49,14 +51,10 @@ public class OTTools {
                 null, new ItemStack(Material.STICK), null,
                 null, new ItemStack(Material.STICK), null
             }
-        ) {
-            @Override
-            public ToolUseHandler getItemHandler() {
-                return (e, tool, fortune, drops) -> {
-                    // 核心稿没有特殊功能，只是一个高效的镐子
-                };
-            }
-        };
+        );
+        corePickaxe.addItemHandler((ToolUseHandler) (e, tool, fortune, drops) -> {
+            // 核心稿没有特殊功能，只是一个高效的镐子
+        });
         corePickaxe.register(plugin);
         plugin.getLogger().info("工具已加载 - 核心稿");
     }
