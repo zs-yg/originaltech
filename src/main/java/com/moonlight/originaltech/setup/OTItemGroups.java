@@ -37,6 +37,7 @@ public class OTItemGroups {
     public static SubItemGroup BASIC_MACHINES_GROUP;
     public static SubItemGroup ADVANCED_MACHINES_GROUP;
     public static SubItemGroup GENERATORS_GROUP;
+    public static SubItemGroup TOOLS_GROUP;
     public static SubItemGroup AUTHOR_GROUP;
 
     @SuppressWarnings("null")
@@ -70,6 +71,12 @@ public class OTItemGroups {
             createIcon(Material.REDSTONE_BLOCK, ChatColor.RED + "发电机")
         );
         
+        TOOLS_GROUP = new SubItemGroup(
+            new NamespacedKey(OriginalTech.getInstance(), "tools"),
+            OT_ITEM_GROUP,
+            createIcon(Material.NETHERITE_PICKAXE, ChatColor.AQUA + "工具")
+        );
+        
         AUTHOR_GROUP = new SubItemGroup(
             new NamespacedKey(OriginalTech.getInstance(), "author"),
             OT_ITEM_GROUP,
@@ -84,6 +91,7 @@ public class OTItemGroups {
         BASIC_MACHINES_GROUP.register(addon);
         ADVANCED_MACHINES_GROUP.register(addon);
         GENERATORS_GROUP.register(addon);
+        TOOLS_GROUP.register(addon);
         AUTHOR_GROUP.register(addon);
     }
 }
