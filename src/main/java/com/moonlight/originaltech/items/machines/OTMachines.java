@@ -11,13 +11,14 @@ public class OTMachines {
         OTBasicMachines.setup(plugin);
 
         // 原版压力机 - 多方块结构
+        // 配方以活塞为中心，玩家右键活塞触发
         OTCompressor compressor = new OTCompressor(
             OTItemGroups.BASIC_MACHINES_GROUP,
             OTCompressor.COMPRESSOR,
             new ItemStack[]{
-                new ItemStack(Material.AIR), new ItemStack(Material.PISTON), new ItemStack(Material.AIR),
-                new ItemStack(Material.IRON_BARS), new ItemStack(Material.DISPENSER), new ItemStack(Material.IRON_BARS),
-                new ItemStack(Material.AIR), new ItemStack(Material.PISTON), new ItemStack(Material.AIR)
+                new ItemStack(Material.AIR), new ItemStack(Material.AIR), new ItemStack(Material.AIR),
+                new ItemStack(Material.IRON_BARS), new ItemStack(Material.PISTON), new ItemStack(Material.IRON_BARS),
+                new ItemStack(Material.AIR), new ItemStack(Material.DISPENSER), new ItemStack(Material.AIR)
             }
         );
         compressor.register(plugin);
