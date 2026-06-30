@@ -20,6 +20,19 @@ public class OTFarming {
             }
         ).register(plugin);
         
+        new OTTNTGenerator(
+            OTItemGroups.FARMING_GROUP,
+            OTTNTGenerator.TNT_GENERATOR,
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[]{
+                new ItemStack(Material.REDSTONE), new ItemStack(Material.REDSTONE), new ItemStack(Material.REDSTONE),
+                new ItemStack(Material.OBSERVER), new ItemStack(Material.SMOOTH_STONE_SLAB), new ItemStack(Material.SMOOTH_STONE),
+                new ItemStack(Material.PISTON), new ItemStack(Material.TNT), new ItemStack(Material.PISTON)
+
+            }
+        ).register(plugin);
+        
         plugin.getLogger().info("生电机器已加载 - 1.21.1刷线机");
+        plugin.getLogger().info("生电机器已加载 - TNT复制机");
     }
 }
