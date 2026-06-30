@@ -4,23 +4,17 @@ import com.moonlight.originaltech.setup.OTItemGroups;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
 
 public class OTAuthorItem extends SlimefunItem {
 
-    public static final SlimefunItemStack AUTHOR_HEAD = createPlayerHead();
+    private static final String AUTHOR_TEXTURE = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjZjMDgyNjViYjg5ODg3NmFjNmM2OWQ3OWVhYWFmMjgzYzUyNGM3MzY4YjIzZGY2NzllN2ZlZjJiNTkzZGJkZCJ9fX0=";
 
-    @SuppressWarnings("deprecation")
-    private static SlimefunItemStack createPlayerHead() {
-        ItemStack item = new ItemStack(Material.PLAYER_HEAD);
-        SkullMeta meta = (SkullMeta) item.getItemMeta();
-        meta.setDisplayName("§d作者 moonlight_awa");
-        meta.setOwner("moonlight_awa");
-        item.setItemMeta(meta);
-        return new SlimefunItemStack("OT_AUTHOR", item);
-    }
+    public static final SlimefunItemStack AUTHOR_HEAD = new SlimefunItemStack(
+        "OT_AUTHOR",
+        AUTHOR_TEXTURE,
+        "§d作者 moonlight_awa"
+    );
 
     public OTAuthorItem() {
         super(OTItemGroups.AUTHOR_GROUP, AUTHOR_HEAD, RecipeType.NULL, new ItemStack[9]);

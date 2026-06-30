@@ -6,6 +6,7 @@ import com.moonlight.originaltech.items.materials.OTIronMaterials;
 import com.moonlight.originaltech.items.materials.OTMaterials;
 import com.moonlight.originaltech.items.machines.OTMachines;
 import com.moonlight.originaltech.items.machines.advanced.OTAdvancedMachines;
+import com.moonlight.originaltech.items.machines.farming.OTFarming;
 import com.moonlight.originaltech.items.machines.generator.OTGenerators;
 import com.moonlight.originaltech.items.tools.OTTools;
 
@@ -33,6 +34,9 @@ public class OTSetup {
         
         plugin.getLogger().info("正在注册工具...");
         OTTools.setup(plugin);
+        
+        plugin.getLogger().info("正在注册生电机器...");
+        OTFarming.setup(plugin);
         
         plugin.getLogger().info("正在注册作者信息...");
         OTAuthorItem authorItem = new OTAuthorItem();

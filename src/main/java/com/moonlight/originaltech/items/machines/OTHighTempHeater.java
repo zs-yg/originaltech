@@ -122,6 +122,10 @@ public class OTHighTempHeater extends MultiBlockMachine {
         return null;
     }
 
+    public static SlimefunItemStack getHighTempHeater() {
+        return HIGH_TEMP_HEATER;
+    }
+
     private static class HeatingRecipe {
         final int slot;
         final SlimefunItemStack output;

@@ -39,6 +39,7 @@ public class OTItemGroups {
     public static SubItemGroup GENERATORS_GROUP;
     public static SubItemGroup TOOLS_GROUP;
     public static SubItemGroup AUTHOR_GROUP;
+    public static SubItemGroup FARMING_GROUP;
 
     @SuppressWarnings("null")
     public static void initialize() {
@@ -77,6 +78,12 @@ public class OTItemGroups {
             createIcon(Material.NETHERITE_PICKAXE, ChatColor.AQUA + "工具")
         );
         
+        FARMING_GROUP = new SubItemGroup(
+            new NamespacedKey(OriginalTech.getInstance(), "farming"),
+            OT_ITEM_GROUP,
+            createIcon(Material.WATER_BUCKET, ChatColor.BLUE + "原版生电")
+        );
+        
         AUTHOR_GROUP = new SubItemGroup(
             new NamespacedKey(OriginalTech.getInstance(), "author"),
             OT_ITEM_GROUP,
@@ -92,6 +99,7 @@ public class OTItemGroups {
         ADVANCED_MACHINES_GROUP.register(addon);
         GENERATORS_GROUP.register(addon);
         TOOLS_GROUP.register(addon);
+        FARMING_GROUP.register(addon);
         AUTHOR_GROUP.register(addon);
     }
 }
